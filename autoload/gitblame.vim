@@ -56,8 +56,16 @@ function! gitblame#commit_summary(file, line)
     let author = matchstr(git_blame[1], 'author \zs.\+$')
     let author_mail = matchstr(git_blame[2], 'author-mail \zs.\+$')
     let blank = ' '
+    
+    let time = ''
+    for line in git_blame
+        if line =~# '^committer-time '
+            let time = strftime(“%m/%e/%Y %H:%M:%S”, matchstr(line, '^committer-time \zs.\+$'))
+            break
+        endif
+    endfor
 
-    return '['.commit_hash[0:8].'] '.summary .blank .author_mail .blank .author
+    return '['.commit_hash[0:8].'] '.summary .blank .author_mail .blank .author'('.time')'
 endfunction
 
 function! gitblame#echo()
