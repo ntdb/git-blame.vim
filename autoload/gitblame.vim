@@ -65,7 +65,7 @@ function! gitblame#commit_summary(file, line)
         endif
     endfor
 
-    return '['.commit_hash[0:8].'] '.summary .blank .author_mail .blank .author.'('.time.')'
+    return '[' .commit_hash[0:8] .'] ' .summary .blank .author_mail .blank .author .'(' .time .')'
 endfunction
 
 function! gitblame#echo()
