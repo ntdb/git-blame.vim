@@ -51,7 +51,7 @@ function! gitblame#commit_summary(file, line)
         if line =~# '^summary '
             let summary = matchstr(line, '^summary \zs.\+$')
             break
-        elseif line =~# '^committer-time ')
+        elseif line =~# '^committer-time '
             let rawtime = matchstr(line, '^committer-time \zs.\+$')
             let time = strftime("%m/%e/%Y %H:%M:%S", rawtime)
             break
