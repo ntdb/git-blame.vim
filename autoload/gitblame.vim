@@ -62,7 +62,7 @@ function! gitblame#commit_summary(file, line)
     let author_mail = matchstr(git_blame[2], 'author-mail \zs.\+$')
     let blank = ' '
 
-    return '[' .commit_hash[0:8] .'] ' .summary .blank .author_mail .blank .author .'(' .time .')'
+    return '[' .commit_hash[0:8] .'] ' .summary .blank .author_mail .blank .author .blank .'(' .time .')'
 endfunction
 
 function! gitblame#echo()
